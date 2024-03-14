@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/SpaceX-Launch-Observer/static/css/main.f855e6bc.css",
+    "main.js": "/SpaceX-Launch-Observer/static/js/main.77a7859f.js",
+    "static/js/453.84f90f11.chunk.js": "/SpaceX-Launch-Observer/static/js/453.84f90f11.chunk.js",
+    "static/media/logo.svg": "/SpaceX-Launch-Observer/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/SpaceX-Launch-Observer/index.html",
+    "main.f855e6bc.css.map": "/SpaceX-Launch-Observer/static/css/main.f855e6bc.css.map",
+    "main.77a7859f.js.map": "/SpaceX-Launch-Observer/static/js/main.77a7859f.js.map",
+    "453.84f90f11.chunk.js.map": "/SpaceX-Launch-Observer/static/js/453.84f90f11.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f855e6bc.css",
+    "static/js/main.77a7859f.js"
+  ]
+}
