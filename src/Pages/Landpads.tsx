@@ -22,11 +22,11 @@ interface LandPad {
   id: string;
 }
 
-type LandPads = LandPad[];
+type LandPadsObject = LandPad[];
 
 export default function Landpads() {
   const landpadsAPI = "https://api.spacexdata.com/v4/landpads";
-  const { data, isLoading, error } = useFetch<LandPads>(landpadsAPI);
+  const { data, isLoading, error } = useFetch<LandPadsObject>(landpadsAPI);
 
   if (error) return <div>Error: {error.message}</div>;
 

@@ -55,7 +55,7 @@ interface Core {
   landpad: string | null;
 }
 
-interface SingleLaunch {
+interface SingleLaunchObject {
   fairings: Fairings;
   links: Links;
   static_fire_date_utc: string;
@@ -88,7 +88,8 @@ interface SingleLaunch {
 export default function SingleLaunch() {
   const id = useParams();
   const singleLaunchAPI = `https://api.spacexdata.com/v4/launches/${id["id"]}`;
-  const { data, isLoading, error } = useFetch<SingleLaunch>(singleLaunchAPI);
+  const { data, isLoading, error } =
+    useFetch<SingleLaunchObject>(singleLaunchAPI);
 
   function formatDate(dateString: any) {
     const date = new Date(dateString);

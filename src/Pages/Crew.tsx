@@ -2,7 +2,7 @@ import { Loader } from "../Components";
 import { Link } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
 
-interface Crew {
+interface CrewObject {
   name: string;
   agency: string;
   image: string;
@@ -14,7 +14,7 @@ interface Crew {
 
 export default function Crew() {
   const crewAPI = "https://api.spacexdata.com/v4/crew";
-  const { data, isLoading, error } = useFetch<Crew[]>(crewAPI);
+  const { data, isLoading, error } = useFetch<CrewObject[]>(crewAPI);
 
   return (
     <>

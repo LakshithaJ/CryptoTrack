@@ -2,7 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import { Loader } from "../Components";
 import useFetch from "../hooks/useFetch";
 
-interface SingleLandPad {
+interface SingleLandPadObject {
   images: {
     large: string[];
   };
@@ -25,7 +25,8 @@ interface SingleLandPad {
 export default function SingleLandPad() {
   const id = useParams();
   const singleLandPadAPI = `https://api.spacexdata.com/v4/landpads/${id["id"]}`;
-  const { data, isLoading, error } = useFetch<SingleLandPad>(singleLandPadAPI);
+  const { data, isLoading, error } =
+    useFetch<SingleLandPadObject>(singleLandPadAPI);
 
   return (
     <>

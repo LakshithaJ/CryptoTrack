@@ -2,7 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import { Loader } from "../Components";
 import useFetch from "../hooks/useFetch";
 
-interface SingleCrew {
+interface SingleCrewObject {
   name: string;
   agency: string;
   image: string;
@@ -16,7 +16,7 @@ interface SingleCrew {
 export default function SingleCrew() {
   const id = useParams();
   const singleCrewAPI = `https://api.spacexdata.com/v4/crew/${id["id"]}`;
-  const { data, isLoading, error } = useFetch<SingleCrew>(singleCrewAPI);
+  const { data, isLoading, error } = useFetch<SingleCrewObject>(singleCrewAPI);
 
   return (
     <>

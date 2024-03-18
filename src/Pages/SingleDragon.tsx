@@ -31,7 +31,7 @@ interface Volume {
   cubic_feet: number;
 }
 
-interface SingleDragon {
+interface SingleDragonObject {
   heat_shield: {
     material: string;
     size_meters: number;
@@ -81,7 +81,8 @@ export default function SingleDragon() {
   const [toggle, setToggle] = useState(false);
   const [imageOnDisplay, setImageOnDisplay] = useState(0);
   const singleDragonAPI = `https://api.spacexdata.com/v4/dragons/${id["id"]}`;
-  const { data, isLoading, error } = useFetch<SingleDragon>(singleDragonAPI);
+  const { data, isLoading, error } =
+    useFetch<SingleDragonObject>(singleDragonAPI);
 
   return (
     <>

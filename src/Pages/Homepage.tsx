@@ -2,7 +2,7 @@ import { Loader } from "../Components";
 import useFetch from "../hooks/useFetch";
 
 // Define the interface based on the provided JSON structure
-interface Company {
+interface CompanyObject {
   headquarters: {
     address: string;
     city: string;
@@ -32,7 +32,7 @@ interface Company {
 
 export default function Homepage() {
   const companyAPI = "https://api.spacexdata.com/v4/company";
-  const { data, isLoading, error } = useFetch<Company>(companyAPI);
+  const { data, isLoading, error } = useFetch<CompanyObject>(companyAPI);
 
   return (
     <>

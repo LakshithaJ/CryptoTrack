@@ -85,11 +85,11 @@ interface Launch {
   id: string;
 }
 
-type Launches = Launch[];
+type LaunchesObject = Launch[];
 
 export default function Launches() {
   const launchesAPI = "https://api.spacexdata.com/v4/launches";
-  const { data, isLoading, error } = useFetch<Launches>(launchesAPI);
+  const { data, isLoading, error } = useFetch<LaunchesObject>(launchesAPI);
 
   if (error) return <div>Error: {error.message}</div>;
 

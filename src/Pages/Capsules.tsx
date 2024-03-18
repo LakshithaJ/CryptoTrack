@@ -1,7 +1,7 @@
 import { Loader } from "../Components";
 import useFetch from "../hooks/useFetch";
 
-interface Capsule {
+interface CapsuleObject {
   reuse_count: number;
   water_landings: number;
   land_landings: number;
@@ -15,7 +15,7 @@ interface Capsule {
 
 export default function Capsules() {
   const capsulesAPI = "https://api.spacexdata.com/v4/capsules";
-  const { data, isLoading, error } = useFetch<Capsule[]>(capsulesAPI);
+  const { data, isLoading, error } = useFetch<CapsuleObject[]>(capsulesAPI);
 
   return (
     <>

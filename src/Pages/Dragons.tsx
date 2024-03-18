@@ -30,7 +30,7 @@ interface Volume {
   cubic_feet: number;
 }
 
-interface Dragons {
+interface DragonsObject {
   heat_shield: {
     material: string;
     size_meters: number;
@@ -77,7 +77,7 @@ interface Dragons {
 
 export default function Dragons() {
   const dragonsAPI = "https://api.spacexdata.com/v4/dragons";
-  const { data, isLoading, error } = useFetch<Dragons[]>(dragonsAPI);
+  const { data, isLoading, error } = useFetch<DragonsObject[]>(dragonsAPI);
 
   return (
     <>

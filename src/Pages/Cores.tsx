@@ -1,7 +1,7 @@
 import { Loader } from "../Components";
 import useFetch from "../hooks/useFetch";
 
-interface Cores {
+interface CoresObject {
   block: null | number;
   reuse_count: number;
   rtls_attempts: number;
@@ -17,7 +17,7 @@ interface Cores {
 
 export default function Cores() {
   const coresAPI = "https://api.spacexdata.com/v4/cores";
-  const { data, isLoading, error } = useFetch<Cores[]>(coresAPI);
+  const { data, isLoading, error } = useFetch<CoresObject[]>(coresAPI);
 
   return (
     <>
