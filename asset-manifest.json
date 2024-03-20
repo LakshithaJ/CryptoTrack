@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/SpaceX-Launch-Observer/static/css/main.6bbd804b.css",
-    "main.js": "/SpaceX-Launch-Observer/static/js/main.8083b27f.js",
+    "main.css": "/SpaceX-Launch-Observer/static/css/main.e633eafc.css",
+    "main.js": "/SpaceX-Launch-Observer/static/js/main.361e75d2.js",
     "static/media/bg.avif": "/SpaceX-Launch-Observer/static/media/bg.805f7d1976c4b8fa3d63.avif",
     "index.html": "/SpaceX-Launch-Observer/index.html",
     "static/media/logo.svg": "/SpaceX-Launch-Observer/static/media/logo.dc1130e8c0b6b9afc5c8c22fdc4cea7a.svg",
-    "main.6bbd804b.css.map": "/SpaceX-Launch-Observer/static/css/main.6bbd804b.css.map",
-    "main.8083b27f.js.map": "/SpaceX-Launch-Observer/static/js/main.8083b27f.js.map"
+    "main.e633eafc.css.map": "/SpaceX-Launch-Observer/static/css/main.e633eafc.css.map",
+    "main.361e75d2.js.map": "/SpaceX-Launch-Observer/static/js/main.361e75d2.js.map"
   },
   "entrypoints": [
-    "static/css/main.6bbd804b.css",
-    "static/js/main.8083b27f.js"
+    "static/css/main.e633eafc.css",
+    "static/js/main.361e75d2.js"
   ]
 }
