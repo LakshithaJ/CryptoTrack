@@ -78,6 +78,7 @@ interface DragonsObject {
 export default function Dragons() {
   const dragonsAPI = "https://api.spacexdata.com/v4/dragons";
   const { data, isLoading, error } = useFetch<DragonsObject[]>(dragonsAPI);
+  if (error) return <div>Error: {error.message}</div>;
 
   return (
     <>
@@ -97,7 +98,7 @@ export default function Dragons() {
                       loading="lazy"
                       className="h-96 w-full object-cover center"
                     />
-                    <div className="bg-black p-5">
+                    <div className="bg-zinc-900 p-5">
                       <h2 className="font-bold text-white text-lg tracking-wide mb-5">
                         {name}
                       </h2>

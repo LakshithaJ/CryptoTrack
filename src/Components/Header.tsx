@@ -1,79 +1,59 @@
-import React from "react";
 import { Link } from "react-router-dom";
-import { SiSpacex } from "react-icons/si";
+import logo from "../assets/images/logo.svg";
 export default function Header() {
+  const handleOpenMenu = () => {
+    const navbar = document.querySelector(".navbar");
+    const listItems = document.querySelectorAll("li");
+
+    navbar && navbar.classList.toggle("open");
+    listItems.forEach((listItem) => {
+      listItem.addEventListener("click", () => {
+        navbar && navbar.classList.remove("open");
+      });
+    });
+  };
+
+  const links = [
+    { path: "/capsules", name: "Capsules" },
+    { path: "/cores", name: "Cores" },
+    { path: "/crew", name: "Crew" },
+    { path: "/dragons", name: "Dragons" },
+    { path: "/landpads", name: "Landpads" },
+    { path: "/launches", name: "Launches" },
+    { path: "/launchpads", name: "Launchpads" },
+    { path: "/payloads", name: "Payloads" },
+    { path: "/roadster", name: "Roadster" },
+    { path: "/rockets", name: "Rockets" },
+    { path: "/ships", name: "Ships" },
+    { path: "/starlink", name: "Starlink" },
+  ];
   return (
     <>
-      <header className="header absolute flex items-center justify-between px-5 w-full">
+      <header className="absolute top-0 left-0 p-5 flex items-center justify-between w-full lg:py-0">
         <div>
           <Link to="/">
-            <SiSpacex className="text-8xl text-white" />
+            <img src={logo} alt="SpaceX" className="w-16 lg:w-auto" />
           </Link>
         </div>
 
-        <ul className="flex flex-wrap">
-          <li className="mr-2">
-            <Link to="./capsules" className="text-white text-sm lg:text-base">
-              Capsules
-            </Link>
-          </li>
-          <li className="mr-2">
-            <Link to="./cores" className="text-white text-sm lg:text-base">
-              Cores
-            </Link>
-          </li>
-          <li className="mr-2">
-            <Link to="./crew" className="text-white text-sm lg:text-base">
-              Crew
-            </Link>
-          </li>
-          <li className="mr-2">
-            <Link className="text-white text-sm lg:text-base" to="./dragons">
-              Dragons
-            </Link>
-          </li>
-          <li className="mr-2">
-            <Link className="text-white text-sm lg:text-base" to="./landpads">
-              Landpads
-            </Link>
-          </li>
-          <li className="mr-2">
-            <Link className="text-white text-sm lg:text-base" to="./launches">
-              Launches
-            </Link>
-          </li>
-          {/* <li>
-            <Link className="text-white text-sm lg:text-base" to="./launchpads">
-              Launchpads
-            </Link>
-          </li>
-          <li>
-            <Link
-              className="text-white text-sm lg:text-base"
-              to="./payloads"
-            ></Link>
-          </li>
-          <li>
-            <Link className="text-white text-sm lg:text-base" to="./roadster">
-              Roadster
-            </Link>
-          </li>
-          <li>
-            <Link className="text-white text-sm lg:text-base" to="./rockets">
-              Rockets
-            </Link>
-          </li>
-          <li>
-            <Link className="text-white text-sm lg:text-base" to="./ships">
-              Ships
-            </Link>
-          </li>
-          <li>
-            <Link className="text-white text-sm lg:text-base" to="./starlink">
-              Starlink
-            </Link>
-          </li> */}
-        </ul>
+        <nav className="navbar">
+          <ul>
+            {links.map((link) => (
+              <li key={link.path}>
+                <Link to={link.path}>{link.name}</Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+
+        <div className="lg:hidden">
+          <button
+            onClick={handleOpenMenu}
+            className="menu-button text-white uppercase text-sm tracking-wide"
+          >
+            Menu
+          </button>
+        </div>
       </header>
     </>
   );

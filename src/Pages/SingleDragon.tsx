@@ -83,6 +83,7 @@ export default function SingleDragon() {
   const singleDragonAPI = `https://api.spacexdata.com/v4/dragons/${id["id"]}`;
   const { data, isLoading, error } =
     useFetch<SingleDragonObject>(singleDragonAPI);
+  if (error) return <div>Error: {error.message}</div>;
 
   return (
     <>
@@ -90,8 +91,32 @@ export default function SingleDragon() {
         <Loader />
       ) : (
         <section className="py-32 max-width text-white px-5 flex flex-col md:grid md:grid-cols-2 md:gap-10">
+          <article className="mb-5">
+            <img
+              src={data?.flickr_images[imageOnDisplay]}
+              alt={data?.name}
+              className="h-96 w-full object-cover"
+            />
+
+            <ul className="flex flex-wrap items-center justify-start gap-3 mt-5">
+              {data?.flickr_images.map((image, index) => (
+                <li
+                  key={index}
+                  onClick={() => setImageOnDisplay(index)}
+                  className={`${index === imageOnDisplay && "p-1 bg-white"}`}
+                >
+                  <img
+                    src={image}
+                    alt={data?.name}
+                    className="w-28 h-20 object-cover cursor-pointer"
+                  />
+                </li>
+              ))}
+            </ul>
+          </article>
+
           <article>
-            <h1 className="heading mb-8">{data?.name}</h1>
+            <h1 className="heading mb-8 text-start">{data?.name}</h1>
             <h2 className="font-bold opacity-80 text-lg lg:text-2xl mb-10">
               First flight date: {data?.first_flight}
             </h2>
@@ -200,33 +225,8 @@ export default function SingleDragon() {
                   <li>Diameter: {data?.diameter?.meters} m</li>
                 </ul>
               )}
-
-              {/* Imperial Units */}
-              <ul className="flex flex-col items-start justify-start gap-2">
-                <li>Launch Payload Mass: {data?.launch_payload_mass?.lb} lb</li>
-                <li>Return Payload Mass: {data?.return_payload_mass?.lb} lb</li>
-                <li>
-                  Pressurized Capsule Payload Volume:{" "}
-                  {data?.pressurized_capsule?.payload_volume?.cubic_feet} ft
-                  <sup>3</sup>
-                </li>
-                <li>Height With Trunck: {data?.height_w_trunk?.feet} ft</li>
-                <li>
-                  Launch Payload Volume: {data?.launch_payload_vol?.cubic_feet}{" "}
-                  ft<sup>3</sup>
-                </li>
-                <li>
-                  Return Payload Volume: {data?.return_payload_vol?.cubic_feet}{" "}
-                  ft<sup>3</sup>
-                </li>
-                <li>
-                  Trunck Volume: {data?.trunk?.trunk_volume?.cubic_feet} ft
-                  <sup>3</sup>
-                </li>
-                <li>Diameter: {data?.diameter?.feet} ft</li>
-              </ul>
             </div>
-            <ul className="mt-8 flex items-center gap-4 justify-start hover:opacity-100">
+            <ul className="mt-8 flex items-center gap-2 justify-start hover:opacity-100 sm:flex-col md:flex-row">
               <li>
                 <button className="btn" onClick={() => setToggle(!toggle)}>
                   {toggle ? "Show Metric Units" : "Show Imperial Units"}
@@ -234,33 +234,9 @@ export default function SingleDragon() {
               </li>
               <li className="opacity-75 text-sm hover:opacity-100">
                 <Link to="/dragons" className="btn">
-                  &larr; Back to Dragons
+                  &larr; Back
                 </Link>
               </li>
-            </ul>
-          </article>
-
-          <article className="mt-5">
-            <img
-              src={data?.flickr_images[imageOnDisplay]}
-              alt={data?.name}
-              className="h-96 w-full object-cover"
-            />
-
-            <ul className="flex flex-wrap items-center justify-start gap-3 mt-5">
-              {data?.flickr_images.map((image, index) => (
-                <li
-                  key={index}
-                  onClick={() => setImageOnDisplay(index)}
-                  className={`${index === imageOnDisplay && "p-1 bg-white"}`}
-                >
-                  <img
-                    src={image}
-                    alt={data?.name}
-                    className="w-28 h-20 object-cover cursor-pointer"
-                  />
-                </li>
-              ))}
             </ul>
           </article>
         </section>

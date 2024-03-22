@@ -16,6 +16,7 @@ interface CapsuleObject {
 export default function Capsules() {
   const capsulesAPI = "https://api.spacexdata.com/v4/capsules";
   const { data, isLoading, error } = useFetch<CapsuleObject[]>(capsulesAPI);
+  if (error) return <div>Error: {error.message}</div>;
 
   return (
     <>

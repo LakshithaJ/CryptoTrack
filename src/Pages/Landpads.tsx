@@ -58,7 +58,7 @@ export default function Landpads() {
                         0,
                         200
                       )}...`}</p>
-                      <Link className="btn mt-5" to={`./landpads/${id}`}>
+                      <Link className="btn mt-5" to={`/landpads/${id}`}>
                         Read more &rarr;
                       </Link>
                     </div>

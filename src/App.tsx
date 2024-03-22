@@ -17,13 +17,16 @@ import {
   SingleDragon,
   SingleLandPad,
   SingleLaunch,
+  SingleLaunchPad,
+  SingleRocket,
   Starlink,
 } from "./Pages";
 import { Header } from "./Components";
+import SingleShip from "./Pages/SingleShip";
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/SpaceX-Launch-Observer">
       <>
         <Header />
         <Routes>
@@ -39,10 +42,13 @@ function App() {
           <Route path="/launches" element={<Launches />} />
           <Route path="/launches/:id" element={<SingleLaunch />} />
           <Route path="/launchpads" element={<Launchpads />} />
+          <Route path="/launchpads/:id" element={<SingleLaunchPad />} />
           <Route path="/payloads" element={<Payloads />} />
           <Route path="/roadster" element={<Roadster />} />
           <Route path="/rockets" element={<Rockets />} />
+          <Route path="/rockets/:id" element={<SingleRocket />} />
           <Route path="/ships" element={<Ships />} />
+          <Route path="/ships/:id" element={<SingleShip />} />
           <Route path="/starlink" element={<Starlink />} />
           <Route path="*" element={<Error />} />
         </Routes>

@@ -33,82 +33,94 @@ interface CompanyObject {
 export default function Homepage() {
   const companyAPI = "https://api.spacexdata.com/v4/company";
   const { data, isLoading, error } = useFetch<CompanyObject>(companyAPI);
+  if (error) return <div>Error: {error.message}</div>;
 
   return (
     <>
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <section className="showcase">
-          <div className="overlay">
-            <article className="text-white">
-              <h1 className="heading text-center">SpaceX</h1>
-              <div className="mt-10 px-5 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3 max-w-4xl mx-auto lg:gap-20">
-                <article>
-                  <h2 className="font-bold border-b-2 border-white text-xl mb-3 pb-2 uppercase tracking-wider">
+      <section className="showcase">
+        <div className="overlay px-5">
+          <h1 className="heading">
+            All SpaceX info in one place{" "}
+            <span className="block mt-2 opacity-50">
+              aside from their website
+            </span>
+          </h1>
+
+          {isLoading ? (
+            <Loader />
+          ) : (
+            <>
+              <div className="flex flex-col justify-center md:flex-row">
+                <article className="mt-5 mb-5 sm:mt-0 md:mr-10 lg:mr-20">
+                  <h2 className="border-b border-white font-semibold text-white uppercase tracking-wide mb-3">
                     About
                   </h2>
-                  <ul className="text-lg opacity-75">
-                    <li className="mb-1">Name: {data?.name}</li>
-                    <li className="mb-1">Founder: {data?.founder}</li>
-                    <li className="mb-1">Founded in: {data?.founded}</li>
-                    <li className="mb-1">
-                      No. of employees: {data?.employees}
+                  <ul>
+                    <li className="text-sm text-white opacity-75 mb-1">
+                      Founded in {data?.founded} by {data?.founder}
                     </li>
-                    <li className="mb-1">No. of vehicles: {data?.vehicles}</li>
-                    <li className="mb-1">
-                      No. of launch sites: {data?.launch_sites}
+                    <li className="text-sm text-white opacity-75 mb-1">
+                      Has {data?.employees} employees,
                     </li>
-                    <li className="mb-1">
-                      No. of text sites: {data?.test_sites}
+                    <li className="text-sm text-white opacity-75 mb-1">
+                      {data?.vehicles} space vehicles,
                     </li>
-                    <li className="mb-1">CEO: {data?.ceo}</li>
-                    <li className="mb-1">CTO: {data?.cto}</li>
-                    <li className="mb-1">COO: {data?.coo}</li>
-                    <li className="mb-1">
-                      Valuation: {data?.valuation.toLocaleString()} B
+                    <li className="text-sm text-white opacity-75 mb-1">
+                      {data?.vehicles} launch sites,
+                    </li>
+                    <li className="text-sm text-white opacity-75 mb-1">
+                      and {data?.test_sites} test sites,
+                    </li>
+                    <li className="text-sm text-white opacity-75 mb-1">
+                      Valued at ${data?.valuation.toLocaleString()}.
                     </li>
                   </ul>
                 </article>
 
-                <article>
-                  <h2 className="font-bold border-b-2 border-white text-xl mb-3 pb-2 uppercase tracking-wider">
+                <article className="mb-5 md:mr-10 lg:mr-20">
+                  <h2 className="border-b border-white font-semibold text-white uppercase tracking-wide mb-3">
                     Headquarters
                   </h2>
-                  <ul className="text-lg opacity-75">
-                    <li className="mb-1">{data?.headquarters.address}</li>
-                    <li className="mb-1">{data?.headquarters.city}</li>
-                    <li className="mb-1">{data?.headquarters.state}</li>
+                  <ul>
+                    <li className="text-sm text-white opacity-75 mb-1">
+                      {data?.headquarters.address},
+                    </li>
+                    <li className="text-sm text-white opacity-75 mb-1">
+                      {data?.headquarters.city}, {data?.headquarters.state}
+                    </li>
                   </ul>
                 </article>
 
                 <article>
-                  <h2 className="font-bold border-b-2 border-white text-xl mb-3 pb-2 uppercase tracking-wider">
-                    Important Links
+                  <h2 className="border-b border-white font-semibold text-white uppercase tracking-wide mb-3">
+                    Social Media
                   </h2>
-                  <ul className="text-lg opacity-75">
-                    <li className="mb-1">
+                  <ul>
+                    <li className="text-sm text-white opacity-75 mb-1">
                       <a href={data?.links.website}>Website</a>
                     </li>
-                    <li className="mb-1">
-                      <a href={data?.links.elon_twitter}>Elons Twitter</a>
-                    </li>
-                    <li className="mb-1">
+                    <li className="text-sm text-white opacity-75 mb-1">
                       <a href={data?.links.flickr}>Flickr</a>
                     </li>
-                    <li className="mb-1">
+                    <li className="text-sm text-white opacity-75 mb-1">
                       <a href={data?.links.twitter}>Twitter</a>
+                    </li>
+                    <li className="text-sm text-white opacity-75 mb-1">
+                      <a href={data?.links.elon_twitter}>Elon Musk Twitter</a>
                     </li>
                   </ul>
                 </article>
               </div>
-              <p className="max-w-3xl mx-auto text-center mt-10">
-                {data?.summary}
-              </p>
-            </article>
-          </div>
-        </section>
-      )}
+
+              <div className="text-center">
+                <p className="text-white mt-10 sm:max-w-7xl md:max-w-5xl lg:max-w-2xl">
+                  {data?.summary}
+                </p>
+              </div>
+            </>
+          )}
+        </div>
+      </section>
     </>
   );
 }

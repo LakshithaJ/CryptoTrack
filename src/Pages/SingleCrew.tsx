@@ -17,6 +17,7 @@ export default function SingleCrew() {
   const id = useParams();
   const singleCrewAPI = `https://api.spacexdata.com/v4/crew/${id["id"]}`;
   const { data, isLoading, error } = useFetch<SingleCrewObject>(singleCrewAPI);
+  if (error) return <div>Error: {error.message}</div>;
 
   return (
     <>
@@ -59,7 +60,7 @@ export default function SingleCrew() {
                 </li>
                 <li className="text-white opacity-75 text-sm hover:opacity-100">
                   <Link to="/crew" className="btn">
-                    &larr; Back to Crew
+                    &larr; Back
                   </Link>
                 </li>
               </ul>

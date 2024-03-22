@@ -18,6 +18,7 @@ interface CoresObject {
 export default function Cores() {
   const coresAPI = "https://api.spacexdata.com/v4/cores";
   const { data, isLoading, error } = useFetch<CoresObject[]>(coresAPI);
+  if (error) return <div>Error: {error.message}</div>;
 
   return (
     <>

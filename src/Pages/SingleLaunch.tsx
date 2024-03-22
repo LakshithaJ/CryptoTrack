@@ -90,6 +90,7 @@ export default function SingleLaunch() {
   const singleLaunchAPI = `https://api.spacexdata.com/v4/launches/${id["id"]}`;
   const { data, isLoading, error } =
     useFetch<SingleLaunchObject>(singleLaunchAPI);
+  if (error) return <div>Error: {error.message}</div>;
 
   function formatDate(dateString: any) {
     const date = new Date(dateString);
@@ -127,7 +128,7 @@ export default function SingleLaunch() {
               className="h-100"
             />
           </article>
-          <article>
+          <article className="px-5">
             <h1 className="heading mt-10">{data?.name}</h1>
             <h2 className="font-bold opacity-80 text-lg lg:text-2xl mb-10 mt-2">
               Launch Date: {formatDate(data?.date_utc)},{" "}
@@ -154,15 +155,18 @@ export default function SingleLaunch() {
             </ul>
 
             <ul className="text-sm flex flex-wrap items-center justify-start gap-5">
-              <li className="btn mb-2 opacity-75 capitalize">
-                <a
-                  href={data?.links?.article}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Read article
-                </a>
-              </li>
+              {data?.links?.article && (
+                <li className="btn mb-2 opacity-75 capitalize">
+                  <a
+                    href={data?.links?.article}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Read article
+                  </a>
+                </li>
+              )}
+
               {data?.links?.presskit && (
                 <li className="btn mb-2 opacity-75 capitalize">
                   <a
@@ -175,30 +179,35 @@ export default function SingleLaunch() {
                 </li>
               )}
 
-              <li className="btn mb-2 opacity-75 capitalize">
-                <a
-                  href={data?.links?.webcast}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Watch launch on YouTube
-                </a>
-              </li>
+              {data?.links?.webcast && (
+                <li className="btn mb-2 opacity-75 capitalize">
+                  <a
+                    href={data?.links?.webcast}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Watch launch on YouTube
+                  </a>
+                </li>
+              )}
             </ul>
             <ul className="flex items-center justify-start gap-5 mt-10">
-              <li>
-                <a
-                  className="btn opacity-75"
-                  href={data?.links?.wikipedia}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Wikipedia
-                </a>
-              </li>
+              {data?.links?.wikipedia && (
+                <li>
+                  <a
+                    className="btn opacity-75"
+                    href={data?.links?.wikipedia}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Wikipedia
+                  </a>
+                </li>
+              )}
+
               <li className="opacity-75 text-sm hover:opacity-100">
                 <Link to="/launches" className="btn">
-                  &larr; Back to Launches
+                  &larr; Back
                 </Link>
               </li>
             </ul>

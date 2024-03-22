@@ -15,7 +15,9 @@ import Launchpads from "./Launchpads";
 import SingleCrew from "./SingleCrew";
 import SingleLaunch from "./SingleLaunch";
 import SingleDragon from "./SingleDragon";
+import SingleRocket from "./SingleRocket";
 import SingleLandPad from "./SingleLandPad";
+import SingleLaunchPad from "./SingleLaunchPad";
 
 export {
   Cores,
@@ -35,5 +37,7 @@ export {
   SingleDragon,
   SingleLandPad,
   SingleLaunch,
+  SingleLaunchPad,
+  SingleRocket,
   Starlink,
 };

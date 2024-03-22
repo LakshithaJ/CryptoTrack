@@ -15,6 +15,7 @@ interface CrewObject {
 export default function Crew() {
   const crewAPI = "https://api.spacexdata.com/v4/crew";
   const { data, isLoading, error } = useFetch<CrewObject[]>(crewAPI);
+  if (error) return <div>Error: {error.message}</div>;
 
   return (
     <>
@@ -32,7 +33,7 @@ export default function Crew() {
                       src={image}
                       alt={name}
                       loading="lazy"
-                      className="h-96 w-full object-contain center"
+                      className="h-full w-full object-contain center"
                     />
                     <h2 className="absolute bottom-5 left-5 font-bold text-white text-lg tracking-wide">
                       {name}

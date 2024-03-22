@@ -2,11 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-img {
-  height: 100%;
-  width: 100%;
-}
-
 body {
   margin: 0;
   font-family: -apple-system, sans-serif;
@@ -15,64 +10,122 @@ body {
   background-color: black;
 }
 
+img {
+  max-width: 100%;
+}
+
 .btn {
-  @apply py-2 px-8 border-white border-2 bg-transparent hover:opacity-75 transition-all duration-200;
+  @apply py-2 px-4 border-2 bg-transparent hover:opacity-75 transition-all duration-200;
 }
 
 .heading {
-  @apply text-white font-bold text-4xl md:text-5xl xl:text-6xl;
+  @apply font-bold text-white text-3xl md:text-4xl lg:text-6xl capitalize mb-5;
 }
 
-p {
-  @apply text-sm;
+.heading-inner {
+  @apply font-bold text-white text-3xl md:text-4xl lg:text-6xl capitalize mb-5;
+}
+
+p,
+li {
   line-height: 1.8;
+}
+
+.loading-spinner {
+  @apply flex flex-col items-center justify-center h-screen;
+}
+
+.loading-spinner article {
+  @apply w-20 h-20 border-4 border-white opacity-50 border-t-zinc-600 rounded-full animate-spin;
+}
+
+.loading-spinner p {
+  @apply text-white opacity-75 mt-2 text-center;
+}
+
+.max-width {
+  @apply px-5 lg:max-w-4xl lg:mx-auto xl:max-w-6xl 2xl:px-0;
 }
 
 .showcase {
   background: url("./assets/images/bg.avif") no-repeat center/cover;
-  height: calc(100vh - 0.1px);
+  height: calc(150vh - 0.1px);
 }
 
 .showcase .overlay {
-  background-color: rgba(0, 0, 0, 0.6);
-  height: calc(100vh - 0.1px);
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  height: calc(150vh - 0.1px);
 }
 
-.max-width {
-  @apply max-w-6xl mx-auto;
+.navbar {
+  position: absolute;
+  top: 6rem;
+  left: -1000vw;
+  right: 1.25rem;
+  background-color: transparent;
+  color: #fff;
+  z-index: -999;
+  padding: 1.25rem;
+  transition: all 0.3s ease-in-out;
 }
-.bg {
-  background-color: rgb(62, 60, 60);
+
+.navbar.open {
+  top: 6rem;
+  left: 1.25rem;
+  background-color: #0f0f0fee;
+  z-index: 10;
+}
+
+.navbar ul li {
+  margin-bottom: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
 }
 
 .articles {
   @apply bg-stone-900 p-5 rounded-lg shadow shadow-zinc-400 text-white text-sm;
 }
 
-.spinner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
+@media (min-width: 400px) {
+  .showcase,
+  .showcase .overlay {
+    height: calc(130vh - 0.1px);
+  }
 }
 
-.spinner article {
-  width: 5rem;
-  height: 5rem;
-  background-color: transparent;
-  border: 2px solid #98e2cb21;
-  border-top-color: #10b581;
-  border-radius: 50%;
-  margin-bottom: 10px;
-  animation: spin 3s linear infinite;
+@media (min-width: 768px) {
+  .showcase,
+  .showcase .overlay {
+    height: calc(110vh - 0.1px);
+  }
 }
 
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
+@media (min-width: 1024px) {
+  .navbar {
+    position: relative;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: transparent;
+    z-index: auto;
+    padding: 0;
+  }
+
+  .navbar ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .navbar ul li {
+    margin: 0 1rem 0 0;
+    font-size: 14px;
+    font-weight: normal;
+    text-transform: capitalize;
+    letter-spacing: 0;
   }
 }
